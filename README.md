@@ -9,7 +9,7 @@ bundler-thankyou analyzes a project's [gem](https://rubygems.org/) dependencies 
 
 Thanks to lightning transactions happen anonymously directly between the funder and gem maintainer. No service middleman and signup is required. 
 
-[![asciicast](https://asciinema.org/a/9MfCfcKLaKu4mp4lT9w4XHr2d.svg)](https://asciinema.org/a/9MfCfcKLaKu4mp4lT9w4XHr2d)
+[![asciicast](https://asciinema.org/a/9MfCfcKLaKu4mp4lT9w4XHr2d.svg)](https://asciinema.org/a/9MfCfcKLaKu4mp4lT9w4XHr2d?autoplay=1)
 
 ### Background
 
