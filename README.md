@@ -123,6 +123,11 @@ We could provide additional services (for both user and project separately) to b
 
 Again Bitcoin is the "protocol". There are already plenty tools out there that for example give you a visa/master card for spending the received bitcoins. 
 
+#### Why is it called Bundler Thankyou
+
+[Bundler](https://bundler.io/) is the tool to manage dependencies in the ruby world.
+
+
 ### A comment about money
 
 I am very critical about the human perception of the "payment". I do not want it to feel like I've "paid" somebody for something.   
