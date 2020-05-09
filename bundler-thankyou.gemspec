@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = 'https://github.com/bumi/bundle-thankyou'
 
-  spec.metadata['funding'] = 'lightning:038474ec195f497cf4036e5994bd820dd365bb0aaa7fb42bd9b536913a1a2dcc9e'
+  spec.metadata['funding'] = 'lightning:02ad33d99d0bb3bf3bb8ec8e089cbefa8fd7de23a13cfa59aec9af9730816be76f'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
