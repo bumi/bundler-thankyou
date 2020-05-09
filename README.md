@@ -95,6 +95,8 @@ Have a look at this [example screencast](https://asciinema.org/a/Aki6htjyMcl3MbI
 
 #### Connect the lightning node
 
+Have a look at this [how to screencast](https://asciitinyformsnema.org/a/0SefAba4EH9mtFq8V5lazH4yh)
+
     $ bundler-thankyou setup
     # follow the instructions and provide the host, cert file and macaroon file to your LND node
 
