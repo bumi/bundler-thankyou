@@ -3,8 +3,11 @@
 # Bundler::Thankyou
 ## lightning donation system for rubygems (and other package managers)
 
-### How does it work
+### How does it work?
 
+bundler-thankyou analyzes a project's [gem](https://rubygems.org/) dependencies and sends donations through the [lightning network](http://lightning.network/). 
+
+Thanks to lightning transactions happen anonymously directly between the funder and gem maintainer. No service middleman and signup is required. 
 
 
 ### Background
@@ -19,9 +22,11 @@ Because of the funding details are in the gemspec we can be sure it is where the
 
 The author could also decide to dedicate the donations to somebody else. For example the rails gems could say thankyous should go to RailsGirls or similar projects. 
 
-#### What the user has to do:
+#### What the user/funder has to do:
 
-Use this tool and basically run `bundle thankyou` and specify a desired amount. The amount will automatically be split among all the used gems.
+Connect `bundler-thankyou` to a [LND](https://github.com/lightningnetwork/lnd) lightning node.
+
+Then run `bundle thankyou` and specify a desired amount. The amount will automatically be split among all the used gems.
 
 #### Advantages
 
@@ -34,26 +39,6 @@ Use this tool and basically run `bundle thankyou` and specify a desired amount. 
 * Usable at the moment where the user interacts with the gems (in the terminal running a bundle command)
 * Minimal fees and all the Bitcoin/Lightning advantages
 
-### Questions?
-
-#### Why Bitcoin? 
-
-It is pretty much the only adopted solution to build such things.
-
-#### But I want to pay with credit card (or whatever else)
-
-Bitcoin is used as a method/"protocol" to transfer value. 
-
-We could provide additional services (for both user and project separately) to better fit their needs - for example different payment methods, subscriptions, etc. 
-
-#### But I want to receive payments on my credit card
-
-Again Bitcoin is the "protocol". There are already plenty tools out there that for example give you a visa/master card for spending the received bitcoins. 
-
-### A comment about money
-
-I am very critical about the human perception of the "payment". I do not want it to feel like I've "paid" somebody for something.   
-The tone/message is super important and it should not be "payment" but a way of saying "thank you"... thus bundle thankyou. 
 
 
 ### Installation
@@ -104,6 +89,28 @@ use the `bundler-thankyou command` to fund your favorite gems.
 #### Help for more details
 
     $ bundler-thankyou --help
+
+
+### Questions?
+
+#### Why Bitcoin? 
+
+It is pretty much the only adopted solution to build such things.
+
+#### But I want to pay with credit card (or whatever else)
+
+Bitcoin is used as a method/"protocol" to transfer value. 
+
+We could provide additional services (for both user and project separately) to better fit their needs - for example different payment methods, subscriptions, etc. 
+
+#### But I want to receive payments on my credit card
+
+Again Bitcoin is the "protocol". There are already plenty tools out there that for example give you a visa/master card for spending the received bitcoins. 
+
+### A comment about money
+
+I am very critical about the human perception of the "payment". I do not want it to feel like I've "paid" somebody for something.   
+The tone/message is super important and it should not be "payment" but a way of saying "thank you"... thus bundle thankyou. 
 
 
 ## Contributing
