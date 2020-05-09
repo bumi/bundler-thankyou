@@ -17,7 +17,7 @@ module Bundler
       end
 
       def amount_per_recipient_msat
-        @amount_per_recipient * 1000
+        amount_per_recipient * 1000
       end
 
       def pay!
