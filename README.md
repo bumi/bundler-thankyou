@@ -74,7 +74,7 @@ Once the gem is pushed to [rubygems](https://rubygems.org) you're ready to recei
 
 ### Usage for funders
 
-use the `bundler-thankyou command` to fund your favorite gems.
+use the `bundler-thankyou` command to fund your favorite gems.
 
 #### Send a thankyou to all gems in your Gemfile
 
@@ -90,6 +90,11 @@ Have a look at this [example screencast](https://asciinema.org/a/9MfCfcKLaKu4mp4
     $ bundler-thankyou fund lnurl
     
 Have a look at this [example screencast](https://asciinema.org/a/Aki6htjyMcl3MbIWNUv7S1YgH)
+
+#### Connect the lightning node
+
+    $ bundler-thankyou setup
+    # follow the instructions and provide the host, cert file and macaroon file to your LND node
 
 
 #### Help for more details
