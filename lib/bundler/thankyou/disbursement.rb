@@ -16,13 +16,17 @@ module Bundler
         @amount_per_recipient ||= total_amount / recipients.count
       end
 
+      def amount_per_recipient_msat
+        @amount_per_recipient * 1000
+      end
+
       def pay!
         recipients.each do |name, pubkey_or_lnurl|
-          if Lnurl.lnurl?(pubkey_or_lnurl)
-            result_array = pay_lnurl(pubkey_or_lnurl)
-          else
-            result_array = pay_keysend(pubkey_or_lnurl)
-          end
+          result_array = if Lnurl.valid?(pubkey_or_lnurl)
+                           pay_lnurl(pubkey_or_lnurl)
+                         else
+                           pay_keysend(pubkey_or_lnurl)
+                         end
           yield({ name: name, payment_states: result_array, amount: amount_per_recipient }) if block_given?
         end
       end
@@ -35,7 +39,7 @@ module Bundler
       def pay_lnurl(lnurl)
         lnurl = Lnurl.decode(lnurl)
         lnurl_response = lnurl.response
-        invoice_response = lnurl_response.request_invoice(amount: amount_per_recipient)
+        invoice_response = lnurl_response.request_invoice(amount: amount_per_recipient_msat )
         if invoice_response.status.to_s.downcase == 'error'
           return [OpenStruct.new(status: 'ERROR', lnurl_response: invoice_response)] # ignore for now. returning an error similar to the response from send_payment_v2
         end
@@ -56,7 +60,7 @@ module Bundler
         return false if Time.now.to_i > invoice.timestamp + (invoice.expiry || 3600).to_i
 
         # if the invoice does not specify an amount we check if the amount_per_recipient is within the sendable amount defined in the lnurl
-        return false if invoice.amount.nil? && (amount_per_recipient < lnurl_response.minSendable || amount_per_recipient > lnurl_response.maxSendable)
+        return false if invoice.amount.nil? && (amount_per_recipient_msat < lnurl_response.minSendable || amount_per_recipient_msat > lnurl_response.maxSendable)
 
         return true # default
       end

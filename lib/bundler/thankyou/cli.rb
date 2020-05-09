@@ -19,8 +19,8 @@ module Bundler
       method_option :verbose, type: :boolean, aliases: '-v'
       desc 'gemfile', 'Send a payment to gems in the Gemfile'
       def gemfile
-        say "Analyzing Gemfile: #{Bundler.default_gemfile.to_s}"
-        say "..."
+        say "Analyzing Gemfile: #{Bundler.default_gemfile}"
+        say '...'
 
         self.recipients = Bundler::Thankyou.recipients_from_bundler(options)
         disburse!
@@ -58,7 +58,7 @@ module Bundler
           if recipients.count < 1
             exit
           end
-          shell.print_table(recipients.to_a, :indent => 4, :truncate => true)
+          shell.print_table(recipients.to_a, indent: 4, truncate: true)
           say
 
           if options[:amount].nil?
@@ -70,7 +70,7 @@ module Bundler
           say "Sending #{amount} sats split among #{recipients.count} recipients"
           say
           if amount / recipients.count < MINIMUM_AMOUNT
-            say "A minimum of #{MINIMUM_AMOUNT*recipients.count} sats is required", Shell::Color::RED
+            say "A minimum of #{MINIMUM_AMOUNT * recipients.count} sats is required", Shell::Color::RED
             exit
           end
 
@@ -95,7 +95,7 @@ module Bundler
         end
 
         def lnd_config
-          if File.exists?(CONFIG_FILE)
+          if File.exist?(CONFIG_FILE)
             YAML.safe_load(File.read(CONFIG_FILE)).transform_keys(&:to_sym)
           else # TODO: check env variables
             {}
