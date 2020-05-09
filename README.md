@@ -1,6 +1,7 @@
 
 
-# Bundler::Thankyou - lightning donation system for rubygems (and other package managers)
+# Bundler::Thankyou
+## lightning donation system for rubygems (and other package managers)
 
 
 ## Background
