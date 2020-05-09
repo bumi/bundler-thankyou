@@ -9,6 +9,7 @@ bundler-thankyou analyzes a project's [gem](https://rubygems.org/) dependencies 
 
 Thanks to lightning transactions happen anonymously directly between the funder and gem maintainer. No service middleman and signup is required. 
 
+[![asciicast](https://asciinema.org/a/NgAuqQJsa3rHxTlbLIqciaCov.svg)](https://asciinema.org/a/NgAuqQJsa3rHxTlbLIqciaCov)
 
 ### Background
 
@@ -80,11 +81,16 @@ use the `bundler-thankyou command` to fund your favorite gems.
     # in your project folder run:
     $ bundle thankyou 
 
+Have a look at this [example screencast](https://asciinema.org/a/NgAuqQJsa3rHxTlbLIqciaCov)
+
 #### Send a thankyou to a specific gem
 
     $ bundler-thankyou fund <gem name>
     
-    $ bundler-thankyou fund lnrpc
+    $ bundler-thankyou fund lnurl
+    
+Have a look at this [example screencast](https://asciinema.org/a/Aki6htjyMcl3MbIWNUv7S1YgH)
+
 
 #### Help for more details
 
