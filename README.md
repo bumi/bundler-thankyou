@@ -1,41 +1,74 @@
 
 
-# Bundler::Thankyou
+# Bundler::Thankyou - lightning donation system for rubygems (and other package managers)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bundle/thankyou`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
+## Background
+
+### What the author needs to do:
+
+The gem authoer adds a funding details to the gemspec (in the metadata hash). This currently either can be a lightning node pubkey (that can receive keysend payments) or a LNURL.
+
+That's it. That is all the author needs to do. 
+
+Because of the funding details are in the gemspec we can be sure it is where the author/maintainer wants the money to go to. 
+
+The author could also decide to dedicate the donations to somebody else. For example the rails gems could say thankyous should go to RailsGirls or similar projects. 
+
+### What the user has to do:
+
+Use this tool and basically run `bundle thankyou` and specify a desired amount. The amount will automatically be split among all the used gems.
+
+### Advantages
+
+* No signup whatsover
+* User and maintainer do not need to agree on a service (like paypal) to perform the transaction
+* No central directories
+* Based on existing tools (rubygems)
+* Implemented on a "protocol level" - additional service can be built and integrated. (like subscriptions, etc.)
+* Works internationally
+* Usable at the moment where the user interacts with the gems (in the terminal running a bundle command)
+* Minimal fees and all the Bitcoin/Lightning advantages
+
+## Questions?
+
+### Why Bitcoin? 
+
+It is pretty much the only adopted solution to build such things.
+
+### But I want to pay with credit card (or whatever else)
+
+Bitcoin is used as a method/"protocol" to transfer value. 
+
+We could provide additional services (for both user and project separately) to better fit their needs - for example different payment methods, subscriptions, etc. 
+
+### But I want to receive payments on my credit card
+
+Again Bitcoin is the "protocol". There are already plenty tools out there that for example give you a visa/master card for spending the received bitcoins. 
+
+## A comment about money
+
+I am very critical about the human perception of the "payment". I do not want it to feel like I've "paid" somebody for something.   
+The tone/message is super important and it should not be "payment" but a way of saying "thank you"... thus bundle thankyou. 
+
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'bundler-thankyou'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install bundler-thankyou
 
 ## Usage
 
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/bundler-thankyou.
+Bug reports and pull requests are welcome on GitHub at https://github.com/bumi/bundler-thankyou.
 
+
+## Contact
+
+If you have questions, feedback, ideas please contact me... or even better open an issue. 
+
+Michael Bumann  
+[@bumi](http://twitter.com/bumi)  
 
 ## License
 
