@@ -10,7 +10,7 @@ module Bundler
     @lnd_client = nil
 
     def self.lnd_client
-      @lnd_client
+      @lnd_client ||= Lnrpc::Client.new
     end
 
     def self.lnd_client=(client)
