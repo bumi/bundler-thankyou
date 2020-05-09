@@ -1,11 +1,11 @@
 
 
 # Bundler::Thankyou
-## lightning donation system for rubygems (and other package managers)
+## Lightning donation system for rubygems (and other package managers)
 
 ### How does it work?
 
-bundler-thankyou analyzes a project's [gem](https://rubygems.org/) dependencies, extracts recipient information directly from the gemspecs and sends donations through the [lightning network](http://lightning.network/). 
+bundler-thankyou analyzes a project's [gem](https://rubygems.org/) dependencies, extracts recipient information from the gemspecs and sends donations through the Bitcoin [lightning network](http://lightning.network/). 
 
 No additional central directory/service or signup is needed.
 
@@ -17,27 +17,26 @@ Thanks to lightning transactions happen anonymously directly between the funder 
 
 #### What the author needs to do:
 
-The gem authoer adds a funding details to the gemspec (in the metadata hash). This currently either can be a lightning node pubkey (that can receive keysend payments) or a LNURL.
+The gem author adds funding details to the gemspec (in the [metadata hash](https://guides.rubygems.org/specification-reference/#metadata)). This currently can either be a lightning node pubkey (that can receive keysend payments) or a LNURL.
 
 That's it. That is all the author needs to do. 
 
-Because of the funding details are in the gemspec we can be sure it is where the author/maintainer wants the money to go to. 
-
 The author could also decide to dedicate the donations to somebody else. For example the rails gems could say thankyous should go to RailsGirls or similar projects. 
 
-#### What the user/funder has to do:
+
+#### What the user/funder needs to do:
 
 Connect `bundler-thankyou` to a [LND](https://github.com/lightningnetwork/lnd) lightning node.
 
-Then run `bundle thankyou` and specify a desired amount. The amount will automatically be split among all the used gems.
+Then run `bundle thankyou` and specify a desired amount. The amount will automatically be split among all the gems.
 
 #### Advantages
 
-* No signup whatsover
+* No signup whatsoever
 * User and maintainer do not need to agree on a service (like paypal) to perform the transaction
-* No central directories
-* Based on existing tools (rubygems)
-* Implemented on a "protocol level" - additional service can be built and integrated. (like subscriptions, etc.)
+* No central directories or custodial services
+* Based solely on existing tools (rubygems)
+* Implemented on a "protocol level" - additional service can be built on top of that (like subscriptions, etc.)
 * Works internationally
 * Usable at the moment where the user interacts with the gems (in the terminal running a bundle command)
 * Minimal fees and all the Bitcoin/Lightning advantages
@@ -58,7 +57,7 @@ gem 'bundler-thankyou'
 
 ### Usage for gem maintainers
 
-bundler-thankyou builds on rubygems. Simply add a `funding` metadata entry in your gemspec.
+bundler-thankyou builds on rubygems. Simply add a `funding` [metadata entry in your gemspec](https://guides.rubygems.org/specification-reference/#metadata).
 
 The value is either your node's pubkey or a LNURL. 
 
@@ -74,9 +73,10 @@ Full example: [bundler-thankyou.gemspec](https://github.com/bumi/bundler-thankyo
 
 Once the gem is pushed to [rubygems](https://rubygems.org) you're ready to receive thankyous.
 
+
 ### Usage for funders
 
-use the `bundler-thankyou` command to fund your favorite gems.
+use the `bundler-thankyou` command to fund your favorite gems. 
 
 #### Send a thankyou to all gems in your Gemfile
 
@@ -92,6 +92,7 @@ Have a look at this [example screencast](https://asciinema.org/a/9MfCfcKLaKu4mp4
     $ bundler-thankyou fund lnurl
     
 Have a look at this [example screencast](https://asciinema.org/a/Aki6htjyMcl3MbIWNUv7S1YgH)
+
 
 #### Connect the lightning node
 
