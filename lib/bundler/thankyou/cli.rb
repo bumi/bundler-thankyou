@@ -61,11 +61,17 @@ module Bundler
           shell.print_table(recipients.to_a, indent: 4, truncate: true)
           say
 
+          Bundler::Thankyou.lnd_client = lnd_client
+          if !lnd_connected?
+            say 'Please connect your LND. Please run:', Shell::Color::RED
+            say '> bundler-thankyou setup', Shell::Color::BLUE
+            exit
+          end
+
           if options[:amount].nil?
-            self.amount = ask('How much sats do you want do send in total?', Shell::Color::RED).to_i
+            self.amount = ask('How many sats do you want do send in total?', Shell::Color::RED).to_i
             say
           end
-          Bundler::Thankyou.lnd_client = lnd_client
 
           say "Sending #{amount} sats split among #{recipients.count} recipients"
           say
@@ -104,6 +110,13 @@ module Bundler
 
         def lnd_client
           @lnd_client ||= Lnrpc::Client.new(lnd_config)
+        end
+
+        def lnd_connected?
+          lnd_client.macaroon && !!lnd_client.lightning.get_info
+        rescue StandardError => e
+          say e.messgae if options[:verbose]
+          false
         end
 
         def amount
